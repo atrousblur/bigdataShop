@@ -96,7 +96,7 @@ footer {
 			<ul class="goodsAreaG">
 				<!-- *상품 있을경우 -->
 				<c:forEach var="product" items="${productlist}">
-					<li><a href="/bigdataShop/${product.category_no}/${product.prd_no}" class="goodsLink"
+					<li><a href="/bigdataShop/product/${product.category_no}/${product.prd_no}" class="goodsLink"
 						onclick="formGetSubmit( '/commerce/foffice/product/product.lime', 'r_prcode=G4135_F0002_X0004_K0040' )">
 							<img
 							src="/bigdataShop/resources/images/product/${product.img_gen_file_nm }"

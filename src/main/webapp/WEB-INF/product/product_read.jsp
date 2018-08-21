@@ -1,28 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Bootstrap Example</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link type="text/css" href="/bigdataShop/resources/common/css/master.css"
-		rel="stylesheet" media="screen,print" />
-	<link type="text/css" href="/bigdataShop/resources/common/css/print.css"
-		rel="stylesheet" media="print" />
-	<link type="text/css" href="/bigdataShop/resources/common/css/mall.css"
-		rel="stylesheet" media="screen,print" />
-	<link rel="stylesheet"
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css"
+	href="/bigdataShop/resources/common/css/master.css" rel="stylesheet"
+	media="screen,print" />
+<link type="text/css" href="/bigdataShop/resources/common/css/print.css"
+	rel="stylesheet" media="print" />
+<link type="text/css" href="/bigdataShop/resources/common/css/mall.css"
+	rel="stylesheet" media="screen,print" />
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-
 
 <style>
 A.applink:hover {
@@ -70,12 +68,20 @@ A.info:hover {
 
 </head>
 <body>
-	
+
 	<div id="header"></div>
 	<!-- /header -->
 	<hr />
 
 	<!-- content/-->
+
+<%-- 	<%
+	Cookie cookie = new Cookie("product",);
+	cookie.setMaxAge(60 * 60 * 24);
+	response.addCookie(cookie);
+
+	%>
+	 --%>
 
 
 	<!-- lyt-main/ -->
@@ -109,38 +115,12 @@ A.info:hover {
 
 						<!-- 가격정보처리 -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 						<!-- 가격정보처리 -->
 						<dt>상품명</dt>
-						<dd>
-							${ product.prd_nm}
-						</dd>
+						<dd>${ product.prd_nm}</dd>
 
 						<dt>판매가</dt>
-						<dd>
-							${ product.sell_prc_unit}원
-						</dd>
-
-
-
-
-
-
-
-
+						<dd>${ product.sell_prc_unit}원</dd>
 
 					</dl>
 
@@ -166,7 +146,9 @@ A.info:hover {
 						<!-- 												<dd>무료 배송상품</dd> -->
 
 						<dt>주문수량</dt>
-						<dt><a href="#">가격비교</a></dt>
+						<dt>
+							<a href="#">가격비교</a>
+						</dt>
 						<!------------------ 상품상세 일반형  ---------------------->
 
 						<dd>
@@ -183,13 +165,13 @@ A.info:hover {
 							</div>
 							<div class="btns">
 								<a href="#" onclick="eaUp( this, 1 ); return false;"><img
-									src="/bigdataShop/resources/images/b_up.gif" alt="증가" class="al" /></a> <a href="#"
+									src="/bigdataShop/resources/images/b_up.gif" alt="증가"
+									class="al" /></a> <a href="#"
 									onclick="eaUp( this, -1 ); return false;"><img
-									src="/bigdataShop/resources/images/b_down.gif" alt="감소" class="al" /></a>
+									src="/bigdataShop/resources/images/b_down.gif" alt="감소"
+									class="al" /></a>
 							</div>
 						</dd>
-
-
 
 
 						<div class="delBtn">
@@ -199,15 +181,11 @@ A.info:hover {
 						</div>
 
 
-
 						<!------------------ 상품상세 일반형  끝 ---------------------->
-
 
 						<!-- *선택옵션 -->
 
-
 						<!-- *입력옵션 -->
-
 
 					</dl>
 
@@ -250,17 +228,49 @@ A.info:hover {
 		</div>
 		<!-- goodsDetailWrap : 상품상세정보 전체 END-->
 
-		<img src="/bigdataShop/resources/images/product/${product.img_org_file_nm }"
+
+
+
+		<img
+			src="/bigdataShop/resources/images/product/${product.img_org_file_nm }"
+			alt="썸이미지" />
+
+		<div id="sky">
+			<%-- 			<%
+				Cookie[] cookies = request.getCookies(); // 요청정보로부터 쿠키를 가져온다.
+				for (int i = 0; i < cookies.length; i++) { // 쿠키 배열을 반복문으로 돌린다.
+					out.println(i + "번째 쿠키에 설정된 값 : " + cookies[i].getValue()); // 쿠키의 값을 가져온다.
+				}
+			%> --%>
+
+			<c:if test="${empty cookie}">
+				<c:forEach var="cookies" items="${cookie}">
+			상품번호: ${cookies.value}
+				<img
+						src="/bigdataShop/resources/images/product/${cookies.img_org_file_nm }"
+						alt="썸이미지" width="50px" height="50px" />
+
+				</c:forEach>
+			</c:if>
+		</div>
+
+
+
+	</div>
+
+	<%-- 			<img
+			src="/bigdataShop/resources/images/product/${product.img_org_file_nm }"
 			alt="썸이미지" />
 		<div id="sky">
-			<img src="/bigdataShop/resources/images/product/${product.img_org_file_nm }"
-			alt="썸이미지" width="50px" height="50px" />
+			<img
+				src="/bigdataShop/resources/images/product/${product.img_org_file_nm }"
+				alt="썸이미지" width="50px" height="50px" />
 		</div>
-		</div>
-	
-		<!-- =================댓글등록화면================================= -->
-	
-	
+	</div>
+ --%>
+	<!-- =================댓글등록화면과 조회화면================================= -->
+
+
 </body>
 </html>
 
