@@ -1,1 +1,1 @@
-select * from TB_PRODUCT
+select * from board;

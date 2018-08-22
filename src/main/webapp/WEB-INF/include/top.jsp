@@ -36,6 +36,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	<li><a href="/bigdataShop/admin/index.do"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
+        <li><a href="/bigdataShop/board/list.do"><span class="glyphicon glyphicon-th-list"></span> Board</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

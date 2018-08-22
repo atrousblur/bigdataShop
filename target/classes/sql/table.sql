@@ -92,10 +92,13 @@ CREATE TABLE board (
        MOD_DTM              VARCHAR2(14) NULL,
        PRIMARY KEY (BOARD_NO)
 );
+
 create table board_file(
 	board_no varchar2(12),
 	file_name varchar2(30)	
 );
+
+create sequence board_seq;
 
 
 DROP TABLE TB_MEM CASCADE CONSTRAINTS;

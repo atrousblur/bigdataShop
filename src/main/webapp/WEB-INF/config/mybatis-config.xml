@@ -6,12 +6,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.kitri.bigdataShop.product.ProductDTO" alias="product" />
-		<!-- <typeAlias type="kr.kitri.bigdataShop.board.BoardDTO" alias="board" /> -->
-	
+		<typeAlias type="kr.kitri.bigdataShop.board.BoardDTO" alias="board" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mapper/product.xml" />
-		<!-- <mapper resource="mapper/board.xml" /> -->
+		<mapper resource="mapper/board.xml" />
 	</mappers>
 </configuration>
