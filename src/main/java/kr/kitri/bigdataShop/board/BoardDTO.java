@@ -1,14 +1,14 @@
 package kr.kitri.bigdataShop.board;
 
 public class BoardDTO {
-	String board_no;
-	String id;
-	String title;
-	String text;
-	int hit;
-	String del_flg;
-	String reg_dtm;
-	String mod_dtm; 
+	private  String board_no;
+	private  String id;
+	private  String title;
+	private  String text;
+	private  int hit;
+	private  String del_flg;
+	private  String reg_dtm;
+	private  String mod_dtm; 
 	
 	public BoardDTO(){
 		
