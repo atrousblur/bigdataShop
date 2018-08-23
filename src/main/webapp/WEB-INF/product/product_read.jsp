@@ -68,7 +68,6 @@ A.info:hover {
 <script type="text/javascript">
 
 function cmtdelete() {
-	alert($("#mem_id").val()+"삭제");
 	$.ajax({
 		url:"/bigdataShop/product/comment/delete.do",
 		type:"post",
@@ -78,8 +77,7 @@ function cmtdelete() {
 			"prd_no":$("#prd_no").val()
 		},
 		success : function(data){
-			alert(data);
-				mydata=""; // 조회한 json객체 안의 모든 데이터를 꺼내서 추가할 변수
+				mydata=""; 
 				for(i=0;i<data.length;i++){
 					mydata = mydata + "<ul><li class='kboard-comments-item'><div class='comments-list-username'>"
 					+data[i].mem_id+"</div><div class='comments-list-create'>"
@@ -105,7 +103,6 @@ function cmtdelete() {
 						"prd_no":$("#prd_no").val()
 					},
 					success : function(data){
-						alert(data[0].mem_id+" : "+data[0].writedate);
 							mydata=""; 
 							for(i=0;i<data.length;i++){
 								mydata = mydata + "<ul><li class='kboard-comments-item'><div class='comments-list-username'>"
@@ -116,6 +113,7 @@ function cmtdelete() {
 							};
 							$("#cmtlist").empty();
 							$("#cmtlist").append(mydata);
+							$("#pro_comment").empty();
 			        	 }
 			   		 
 				})
