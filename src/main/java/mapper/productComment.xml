@@ -8,7 +8,7 @@
 	</insert>
 
 	<select id="list" parameterType="String" resultType="prdcmt">
-		select * from pro_comment where prd_no = #{prd_no} order by writedate desc
+		select * from pro_comment where prd_no = #{prd_no} order by writedate asc
 	</select>
 
 	<delete id="delete" parameterType="prdcmt">

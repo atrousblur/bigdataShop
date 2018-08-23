@@ -21,7 +21,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel='stylesheet' id='kboard-comments-skin-default-css'
+	href='/bigdataShop/resources/common/css/comments.css?ver=4.4.4'
+	type='text/css' media='all' />
 <style>
 A.applink:hover {
 	border: 2px dotted #DCE6F4;
@@ -63,7 +65,67 @@ A.info:hover {
 	padding: 30px
 }
 </style>
+<script type="text/javascript">
 
+function cmtdelete() {
+	alert($("#mem_id").val()+"삭제");
+	$.ajax({
+		url:"/bigdataShop/product/comment/delete.do",
+		type:"post",
+		data:{
+			"mem_id":$("#mem_id").val(),
+			"pro_comment":$("#pro_comment").val(),
+			"prd_no":$("#prd_no").val()
+		},
+		success : function(data){
+			alert(data);
+				mydata=""; // 조회한 json객체 안의 모든 데이터를 꺼내서 추가할 변수
+				for(i=0;i<data.length;i++){
+					mydata = mydata + "<ul><li class='kboard-comments-item'><div class='comments-list-username'>"
+					+data[i].mem_id+"</div><div class='comments-list-create'>"
+					+data[i].writedate+"</div><div class='comments-list-content'>"
+					+data[i].pro_comment+"</div><div class='comments-list-controller'>"
+					+"<div class='right'><a type='button' onclick='cmtdelete()' title='삭제'>삭제</a></div></div></li></ul>"
+				};
+				$("#cmtlist").empty();
+				$("#cmtlist").append(mydata);
+        	 }
+   		 
+	})
+}
+
+	$(document).ready(function() {
+		   $("#cmtinsert").on("click", function() {
+				$.ajax({
+					url:"/bigdataShop/product/comment/write.do",
+					type:"post",
+					data:{
+						"mem_id":$("#mem_id").val(),
+						"pro_comment":$("#pro_comment").val(),
+						"prd_no":$("#prd_no").val()
+					},
+					success : function(data){
+						alert(data[0].mem_id+" : "+data[0].writedate);
+							mydata=""; 
+							for(i=0;i<data.length;i++){
+								mydata = mydata + "<ul><li class='kboard-comments-item'><div class='comments-list-username'>"
+								+data[i].mem_id+"</div><div class='comments-list-create'>"
+								+data[i].writedate+"</div><div class='comments-list-content'>"
+								+data[i].pro_comment+"</div><div class='comments-list-controller'>"
+								+"<div class='right'><a type='button' onclick='cmtdelete()' title='삭제'>삭제</a></div></div></li></ul>"
+							};
+							$("#cmtlist").empty();
+							$("#cmtlist").append(mydata);
+			        	 }
+			   		 
+				})
+		})
+	})
+		
+
+	
+	
+</script>
 
 
 </head>
@@ -75,7 +137,7 @@ A.info:hover {
 
 	<!-- content/-->
 
-<%-- 	<%
+	<%-- 	<%
 	Cookie cookie = new Cookie("product",);
 	cookie.setMaxAge(60 * 60 * 24);
 	response.addCookie(cookie);
@@ -269,6 +331,55 @@ A.info:hover {
 	</div>
  --%>
 	<!-- =================댓글등록화면과 조회화면================================= -->
+
+	<div class="kboard-comments-area">
+		<div id="kboard-comments-1851" class="kboard-comments-default">
+			<div class="kboard-comments-wrap">
+				<div class="comments-header">
+					<div class="comments-count">
+						전체 <span class="comments-total-count" id="cmtcount"></span>
+					</div>
+					<hr />
+				</div>
+				<div class="comments-list" id="cmtlist">
+					<c:forEach var="prdcmt" items="${prdcmtlist}">
+						<ul>
+							<li class="kboard-comments-item">
+								<div class="comments-list-username">${prdcmt.mem_id }</div>
+								<div class="comments-list-create">${prdcmt.writedate }</div>
+								<div class="comments-list-content">${prdcmt.pro_comment }
+								</div>
+
+								<div class="comments-list-controller">
+									<div class="right">
+										<a type="button" id="cmtdelete" onclick="cmtdelete()"
+											class="comments-button-action comments-button-delete"
+											title="삭제">삭제</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</c:forEach>
+				</div>
+
+				<form id="cmtform" method="post">
+					<input id="mem_id" name="mem_id" type="hidden" value="lim">
+					<input id="prd_no" name="prd_no" type="hidden"
+						value="${product.prd_no }">
+					<div class="kboard-comments-form">
+						<div class="comments-field">
+							<textarea name="pro_comment" id="pro_comment"
+								placeholder="댓글을 입력하세요." style="color: black;" required></textarea>
+						</div>
+						<div class="comments-submit-button">
+							<input class="btn" type="button" value="입력" id="cmtinsert">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 </html>
