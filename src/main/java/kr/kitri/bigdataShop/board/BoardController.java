@@ -18,8 +18,7 @@ public class BoardController {
 	BoardService service;
 
 	@RequestMapping(value = "/board/write.do", method = RequestMethod.POST)
-	public String write(BoardDTO data, ArrayList<String> filelist,
-			FileUploadDTO fileInfo, HttpSession session) {
+	public String write(BoardDTO data, ArrayList<String> filelist, HttpSession session) {
 		int result = service.insert(data, filelist);
 		System.out.println(result + "개 행 삽입 성공");
 		return "redirect:/board/list.do";
