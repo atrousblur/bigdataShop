@@ -4,7 +4,7 @@
 
 	<insert id="insert" parameterType="prdcmt">
 		insert into pro_comment values
-		(#{prd_no}, #{mem_id}, #{pro_comment}, sysdate)
+		(prdcmt_seq.nextval,#{prd_no}, #{mem_id}, #{pro_comment}, sysdate)
 	</insert>
 
 	<select id="list" parameterType="String" resultType="prdcmt">
@@ -12,6 +12,6 @@
 	</select>
 
 	<delete id="delete" parameterType="prdcmt">
-		delete from pro_comment where prd_no = #{prd_no} and mem_id=#{mem_id}
+		delete from pro_comment where prdcmt_no = #{prdcmt_no}
 	</delete>
 </mapper>
