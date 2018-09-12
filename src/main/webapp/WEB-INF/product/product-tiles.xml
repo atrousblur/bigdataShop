@@ -12,6 +12,7 @@
 		<put-attribute name="content" value="/WEB-INF/product/product_read.jsp" />
 	</definition>
 	<definition name="comment/result" extends="adminTemplate">
-		<put-attribute name="content" value="/WEB-INF/admin/commentResult.jsp"/>
+		<put-attribute name="admincontent" value="/WEB-INF/admin/commentResult.jsp"/>
 	</definition>
+	
 </tiles-definitions>   

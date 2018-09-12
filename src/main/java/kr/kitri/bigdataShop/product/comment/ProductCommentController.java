@@ -1,6 +1,5 @@
 package kr.kitri.bigdataShop.product.comment;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,18 +15,16 @@ public class ProductCommentController {
 
 	@Autowired
 	ProductCommentService service;
-	
-	@RequestMapping(value = "/product/comment/write.do",
-			method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+
+	@RequestMapping(value = "/product/comment/write.do", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public @ResponseBody List<ProductCommentDTO> write(ProductCommentDTO prdcmt) {
 		int result = service.insert(prdcmt);
 		List<ProductCommentDTO> prdcmtlist = service.CmtList(prdcmt.getPrd_no());
 		System.out.println(result + "개 행 삽입 성공");
 		return prdcmtlist;
 	}
-	
-	@RequestMapping(value = "/product/comment/delete.do",
-			method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+
+	@RequestMapping(value = "/product/comment/delete.do", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public @ResponseBody List<ProductCommentDTO> delete(ProductCommentDTO prdcmt) {
 		int result = service.delete(prdcmt);
 		List<ProductCommentDTO> prdcmtlist = service.CmtList(prdcmt.getPrd_no());
@@ -39,18 +36,18 @@ public class ProductCommentController {
 	public ModelAndView showCommentResult() {
 		ModelAndView mav = new ModelAndView();
 		List<CommentResultDTO> resultList = service.commentResult();
-		List<CommentResultDTO>  tableList = new ArrayList<CommentResultDTO> ();
+		List<CommentResultDTO> tableList = new ArrayList<CommentResultDTO>();
 		int size = resultList.size();
 		for (int i = 0; i < size; i++) {
-			CommentResultDTO result =  resultList.get(i);
+			CommentResultDTO result = resultList.get(i);
 			tableList.add(result);
-			if(i==10){
+			if (i == 10) {
 				break;
 			}
 		}
-		mav.addObject("resultList",resultList);
-		mav.addObject("tableList",tableList);
+		mav.addObject("resultList", resultList);
+		mav.addObject("tableList", tableList);
 		mav.setViewName("comment/result");
 		return mav;
-	}	
+	}
 }
