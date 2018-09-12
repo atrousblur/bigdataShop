@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE tiles-definitions PUBLIC
+<!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       "http://tiles.apache.org/dtds/tiles-config_3.0.dtd">
 
 <tiles-definitions>
 
 	<definition name="product/list" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/product/prdlist.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/product/prdlist.jsp" />
 	</definition>
-
 	<definition name="product/read" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/product/product_read.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/product/product_read.jsp" />
 	</definition>
-
-</tiles-definitions>
-
-
+	<definition name="comment/result" extends="adminTemplate">
+		<put-attribute name="content" value="/WEB-INF/admin/commentResult.jsp"/>
+	</definition>
+</tiles-definitions>   

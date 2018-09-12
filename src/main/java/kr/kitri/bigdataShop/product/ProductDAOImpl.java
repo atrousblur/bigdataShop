@@ -8,33 +8,31 @@ import org.springframework.stereotype.Repository;
 
 @Repository("productdao")
 public class ProductDAOImpl implements ProductDAO {
-
+	
 	@Autowired
-	SqlSession sqlSession; // dao연동하는 메소드가 정의되어 있는 템플릿 클래스
-
-  	@Override
-	public List<ProductDTO> productlist(String category) {	
+	SqlSession sqlSession;
+	
+	@Override
+	public List<ProductDTO> productlist(String category) {
 		String action="";
-		if(category==null) {
+		if(category==null) {	// 전체상품리스트 조회
 			action = "kr.kitri.bigdataShop.product.listall";
-		}else {
+		}
+		else {	// 카테고리별 리스트 조회
 			action = "kr.kitri.bigdataShop.product.categorySearch";
 		}
 		List<ProductDTO> list = sqlSession.selectList(action, category);
-		System.out.println(list);
 		return list;
 	}
- 
 
 	@Override
 	public List<ProductDTO> hitproduct() {
-		return sqlSession.selectList("kr.kitri.bigdataShop.product.hitprd");
+		return sqlSession.selectList("kr.kitri.bigdataShop.product.hitproduct");
 	}
 
 	@Override
 	public List<ProductDTO> newproduct() {
-		return sqlSession.selectList("kr.kitri.bigdataShop.product.newprd");
-
+		return sqlSession.selectList("kr.kitri.bigdataShop.product.newproduct");
 	}
 
 	@Override

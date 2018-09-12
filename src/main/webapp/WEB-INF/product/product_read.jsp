@@ -95,10 +95,8 @@ A.info:hover {
 						$("#cmtlist").empty();
 						$("#cmtlist").append(mydata);
 					}
-
 				})
 	}
-
 	$(document)
 			.ready(
 					function() {
@@ -144,7 +142,6 @@ A.info:hover {
 															$("#pro_comment")
 																	.empty();
 														}
-
 													})
 										})
 					})
@@ -164,7 +161,6 @@ A.info:hover {
 	Cookie cookie = new Cookie("product",);
 	cookie.setMaxAge(60 * 60 * 24);
 	response.addCookie(cookie);
-
 	%>
 	 --%>
 
@@ -372,7 +368,6 @@ A.info:hover {
 								<div class="comments-list-create">${prdcmt.writedate }</div>
 								<div class="comments-list-content">${prdcmt.pro_comment }
 								</div>
-
 								<div class="comments-list-controller">
 									<div class="right">
 										<input id="prdcmt_no" name="prdcmt_no" type="hidden"
@@ -408,5 +403,4 @@ A.info:hover {
 
 </body>
 </html>
-
 

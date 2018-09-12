@@ -27,5 +27,9 @@ public class ProductCommentServiceImpl implements ProductCommentService {
 	public List<ProductCommentDTO> CmtList(String prd_no) {
 		return dao.CmtList(prd_no);
 	}
-
+	@Override
+	public List<CommentResultDTO> commentResult() {
+		return dao.commentResult();
+	}
+	
 }

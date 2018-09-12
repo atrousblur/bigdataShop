@@ -14,4 +14,9 @@
 	<delete id="delete" parameterType="prdcmt">
 		delete from pro_comment where prdcmt_no = #{prdcmt_no}
 	</delete>
+	
+	<select id="comment_result" resultType="commentresult" parameterType="String">
+		select * from comment_result order by to_number(count) desc
+	</select>
+	
 </mapper>

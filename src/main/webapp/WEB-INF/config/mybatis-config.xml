@@ -8,6 +8,7 @@
 		<typeAlias type="kr.kitri.bigdataShop.product.comment.ProductCommentDTO" alias="prdcmt" />
 		<typeAlias type="kr.kitri.bigdataShop.product.ProductDTO" alias="product" />
 		<typeAlias type="kr.kitri.bigdataShop.board.BoardDTO" alias="board" />
+		<typeAlias type="kr.kitri.bigdataShop.product.comment.CommentResultDTO" alias="commentresult" />
 	</typeAliases>
 
 	<mappers>

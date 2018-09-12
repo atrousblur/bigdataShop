@@ -76,9 +76,11 @@ CREATE TABLE TB_PRODUCT (
  		prdcmt_no number,
         prd_no varchar2(20) ,
         mem_id varchar2(20) , 
-        pro_comment varchar2(60),
+        pro_comment varchar2(500),
         writedate date);
  
+        drop table pro_comment CASCADE CONSTRAINTS;
+        
 create sequence prdcmt_seq;
         
 DROP TABLE board CASCADE CONSTRAINTS;
